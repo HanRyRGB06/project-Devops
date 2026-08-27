@@ -8,7 +8,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/v1', (req, res) => {
+const authRoutes = require('./routes/authRoutes');
+const budgetCategoryRoutes = require('./routes/budgetCategoryRoutes');
+const expenseCategoryRoutes = require('./routes/expenseCategoryRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
+const summaryRoutes = require('./routes/summaryRoutes');
+
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/budgets', budgetCategoryRoutes);
+app.use('/api/v1/categories', expenseCategoryRoutes);
+app.use('/api/v1/expenses', expenseRoutes);
+app.use('/api/v1/dashboard', summaryRoutes);
+
+app.get('/', (req, res) => {
   res.json({ message: 'Welcome to e-utilities-cost API' });
 });
 
