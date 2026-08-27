@@ -139,16 +139,16 @@ const Reports = () => {
         </div>
 
         {/* Monthly Comparison Table */}
-        <div className="card">
+        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
           <h4 style={{ marginBottom: '1rem' }}>Monthly Comparison ({previousYear} vs {currentYear})</h4>
-          <div style={{ overflowX: 'auto', maxHeight: '300px' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-              <thead style={{ position: 'sticky', top: 0, background: 'var(--surface-dark)' }}>
-                <tr style={{ borderBottom: '1px solid var(--border)', color: 'var(--text-muted)' }}>
-                  <th style={{ padding: '0.75rem' }}>Month</th>
-                  <th style={{ padding: '0.75rem', textAlign: 'right' }}>{previousYear} (฿)</th>
-                  <th style={{ padding: '0.75rem', textAlign: 'right' }}>{currentYear} (฿)</th>
-                  <th style={{ padding: '0.75rem', textAlign: 'right' }}>Diff</th>
+          <div style={{ overflowY: 'auto', flex: 1, maxHeight: '300px' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', position: 'relative' }}>
+              <thead style={{ position: 'sticky', top: 0, background: 'var(--surface-dark)', zIndex: 1, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+                <tr style={{ color: 'var(--text-muted)' }}>
+                  <th style={{ padding: '0.75rem', borderBottom: '1px solid var(--border)' }}>Month</th>
+                  <th style={{ padding: '0.75rem', textAlign: 'right', borderBottom: '1px solid var(--border)' }}>{previousYear} (฿)</th>
+                  <th style={{ padding: '0.75rem', textAlign: 'right', borderBottom: '1px solid var(--border)' }}>{currentYear} (฿)</th>
+                  <th style={{ padding: '0.75rem', textAlign: 'right', borderBottom: '1px solid var(--border)' }}>Diff</th>
                 </tr>
               </thead>
               <tbody>
