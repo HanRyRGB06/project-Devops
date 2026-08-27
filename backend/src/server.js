@@ -6,6 +6,7 @@ const authRoutes = require('./routes/authRoutes');
 const expenseCategoryRoutes = require('./routes/expenseCategoryRoutes');
 const budgetCategoryRoutes = require('./routes/budgetCategoryRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
+const summaryRoutes = require('./routes/summaryRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/expense-categories', expenseCategoryRoutes);
 app.use('/api/budget-categories', budgetCategoryRoutes);
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/summary', summaryRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to e-utilities-cost API' });
