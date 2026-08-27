@@ -6,51 +6,14 @@ services:
     container_name: e_utilities_mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: e_utilities_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: e_utilities_cost
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpassword
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: e_utilities_phpmyadmin
-    restart: always
-    environment:
-      PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "8085:80"
-    depends_on:
-      - mariadb
-
-  backend:
-    build: ./backend
-    container_name: e_utilities_backend
-    restart: always
-    ports:
-      - "3001:3000"
-    environment:
-      - DB_HOST=mariadb
-      - DB_USER=user
-      - DB_PASSWORD=password
-      - DB_NAME=e_utilities_db
-      - DB_PORT=3306
-      - JWT_SECRET=production_secret_key
-    depends_on:
-      - mariadb
-
-  frontend:
-    build: ./frontend
-    container_name: e_utilities_frontend
-    restart: always
-    ports:
-      - "8082:80"
-    depends_on:
-      - backend
+      - mariadb_data:/var/lib/mysql
 
 volumes:
-  db_data:
+  mariadb_data:
