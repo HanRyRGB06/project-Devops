@@ -11,7 +11,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
 
@@ -23,7 +23,7 @@ services:
       PMA_HOST: mariadb
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "8080:80"
+      - "8085:80"
     depends_on:
       - mariadb
 
@@ -32,7 +32,7 @@ services:
     container_name: e_utilities_backend
     restart: always
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - DB_HOST=mariadb
       - DB_USER=user
@@ -48,7 +48,7 @@ services:
     container_name: e_utilities_frontend
     restart: always
     ports:
-      - "80:80"
+      - "8082:80"
     depends_on:
       - backend
 
