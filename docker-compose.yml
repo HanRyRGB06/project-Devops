@@ -27,5 +27,30 @@ services:
     depends_on:
       - mariadb
 
+  backend:
+    build: ./backend
+    container_name: e_utilities_backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=mariadb
+      - DB_USER=user
+      - DB_PASSWORD=password
+      - DB_NAME=e_utilities_db
+      - DB_PORT=3306
+      - JWT_SECRET=production_secret_key
+    depends_on:
+      - mariadb
+
+  frontend:
+    build: ./frontend
+    container_name: e_utilities_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
 volumes:
   db_data:
