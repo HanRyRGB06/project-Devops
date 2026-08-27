@@ -2,6 +2,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Expenses from './pages/Expenses';
+import Categories from './pages/Categories';
+import Reports from './pages/Reports';
 import { useAuth } from './context/AuthContext';
 
 const PrivateRoute = ({ children }) => {
@@ -19,9 +22,9 @@ function App() {
           <Route path="/" element={<PrivateRoute><Layout /></PrivateRoute>}>
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="categories" element={<div>Categories Page (To be implemented)</div>} />
-            <Route path="expenses" element={<div>Expenses Page (To be implemented)</div>} />
-            <Route path="reports" element={<div>Reports Page (To be implemented)</div>} />
+            <Route path="categories" element={<Categories />} />
+            <Route path="expenses" element={<Expenses />} />
+            <Route path="reports" element={<Reports />} />
           </Route>
         </Routes>
       </div>
