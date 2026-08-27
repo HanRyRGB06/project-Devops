@@ -1,0 +1,34 @@
+name: CD (Continuous Deployment)
+
+on:
+  workflow_run:
+    workflows: ["CI (Continuous Integration)"]
+    branches: [main]
+    types: 
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy Placeholder
+        run: |
+          echo "🚀 Starting Deployment Process..."
+          echo "✅ CI passed successfully. Deploying to production server..."
+          echo "---"
+          echo "💡 Tip: To implement actual deployment, you can use appleboy/ssh-action"
+          echo "Example:"
+          echo "  - name: Deploy to Server"
+          echo "    uses: appleboy/ssh-action@master"
+          echo "    with:"
+          echo "      host: \${{ secrets.SERVER_HOST }}"
+          echo "      username: \${{ secrets.SERVER_USER }}"
+          echo "      key: \${{ secrets.SERVER_KEY }}"
+          echo "      script: |"
+          echo "        cd /path/to/project-Devops"
+          echo "        git pull origin main"
+          echo "        docker-compose up -d --build"
